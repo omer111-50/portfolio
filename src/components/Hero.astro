@@ -1,0 +1,141 @@
+<header class="section hero">
+  <div class="container">
+    <div class="hero__inner">
+      <figure class="hero__photo reveal" style="--i: 0">
+        <img
+          src="/headshot.jpg"
+          alt="Omer Ali Omer"
+          width="300"
+          height="375"
+          fetchpriority="high"
+        />
+      </figure>
+
+      <div class="hero__copy">
+        <p class="label reveal" style="--i: 1">Omer Ali Omer</p>
+        <h1 class="hero__headline reveal" style="--i: 2">
+          I build the platforms enterprise software ships on.
+        </h1>
+        <p class="hero__lede reveal" style="--i: 3">
+          Technical engineer at IBM Client Engineering, Manchester. Cloud-native
+          architecture, internal developer platforms, and applied AI – finishing
+          First Class Honours this summer, and moving towards technical
+          architecture with a career pointed at the Gulf.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hero {
+    border-top: none;
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-40);
+  }
+
+  .hero__photo {
+    flex: 0 0 auto;
+    width: 240px;
+    max-width: 240px;
+    align-self: stretch;
+    margin: 0;
+  }
+
+  .hero__photo img {
+    display: block;
+    width: 240px;
+    max-width: 240px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .hero__copy {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .hero__headline {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    max-width: 24ch;
+    margin-block: var(--space-24) var(--space-32);
+  }
+
+  .hero__lede {
+    font-size: clamp(1rem, 1.75vw, 1.125rem);
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 58ch;
+  }
+
+  @media (max-width: 768px) {
+    .hero__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-20);
+    }
+
+    .hero__photo {
+      flex: none;
+      width: 160px;
+      max-width: 160px;
+      order: 2;
+      align-self: center;
+      margin-block: var(--space-24) 0;
+    }
+
+    .hero__photo img {
+      width: 160px;
+      max-width: 160px;
+      height: auto;
+    }
+
+    .hero__copy {
+      display: contents;
+    }
+
+    .hero__copy .label {
+      order: 1;
+      align-self: center;
+    }
+
+    .hero__copy .hero__headline {
+      order: 3;
+    }
+
+    .hero__copy .hero__lede {
+      order: 4;
+    }
+  }
+
+  /* Signature moment: staggered reveal on load, off under reduced-motion. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: reveal 0.6s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+    animation-delay: calc(var(--i) * 120ms);
+  }
+
+  @keyframes reveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+</style>

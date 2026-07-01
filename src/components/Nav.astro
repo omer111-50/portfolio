@@ -1,0 +1,33 @@
+<nav class="top-nav" aria-label="Primary">
+  <div class="container top-nav__inner">
+    <a href="/" class="top-nav__wordmark label">Omer Ali Omer</a>
+  </div>
+</nav>
+
+<style>
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .top-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-24);
+  }
+
+  .top-nav__wordmark {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .top-nav__wordmark:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+</style>

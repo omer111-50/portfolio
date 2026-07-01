@@ -1,0 +1,60 @@
+---
+import WorkItem from "./WorkItem.astro";
+---
+
+<section class="section" aria-labelledby="work-heading">
+  <div class="container">
+    <p class="label">Selected work</p>
+    <h2 id="work-heading" class="section__title"> Things I've built.</h2>
+
+    <div class="work-list">
+      <WorkItem
+        name="summerbucketlist.me"
+        meta="React · TypeScript · GitHub Pages"
+        icon="work-summerbucketlist.png"
+        href="https://github.com/omer111-50/summer-bucket-list"
+        linkLabel="github.com/omer111-50/summer-bucket-list"
+        status="Live"
+        liveHref="https://summerbucketlist.me"
+      >
+        A curated guide to 64 things to do around Manchester. React and
+        TypeScript, with a filter-sheet UX for narrowing by mood, budget, and
+        distance. Deployed on GitHub Pages behind a custom domain.
+      </WorkItem>
+
+      <WorkItem
+        name="Culture Clash"
+        meta="Next.js · TypeScript · Google Gemini · GreatUniHack 2025"
+        icon="work-culture-clash.png"
+        href="https://github.com/Git-Push-Chill/CultureClash"
+        linkLabel="github.com/Git-Push-Chill/CultureClash"
+      >
+        Built with a team of five at GreatUniHack 2025. A Next.js app that
+        generates AI fusion recipes across 28 cuisines – pick two food cultures
+        and Google Gemini blends them into structured recipes with
+        ingredient-origin tracking and generated flag imagery. TypeScript end to
+        end, engineered properly for a hackathon build: API caching with TTLs,
+        rate limiting, error boundaries, and full keyboard and screen-reader
+        accessibility.
+      </WorkItem>
+
+      <WorkItem
+        name="Wendy"
+        meta="Next.js · TypeScript · IBM Carbon · Bob-a-thon"
+        icon="work-wendy.png"
+      >
+        A real-time scam-call detection concept for elderly users, built
+        same-day at an internal IBM hackathon (Bob-a-thon). Next.js and
+        TypeScript on IBM Carbon, listening to a live call and flagging
+        manipulation patterns as they surface.
+      </WorkItem>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-block: var(--space-08) var(--space-48);
+  }
+</style>

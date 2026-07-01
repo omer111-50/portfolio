@@ -1,0 +1,93 @@
+<section class="section" aria-labelledby="recognition-heading">
+  <div class="container">
+    <p class="label">Recognition</p>
+    <h2 id="recognition-heading" class="section__title">
+      Talks, awards, credentials.
+    </h2>
+
+    <div class="grid rec">
+      <div class="rec__col">
+        <h3 class="rec__subhead label">Speaking</h3>
+        <ul class="rec__list">
+          <li>
+            Keynote, Data Science Summit (Academic Partners Foundation), 2024 –
+            2,000+ live viewers.
+          </li>
+          <li>
+            Speaker, Conf42 LLMs 2025 – “Practical Evolution of Data Science with
+            GenAI,” with Syeda Narmeen.
+          </li>
+          <li>Host, Muslims@IBM: Careers in the Middle East, 2026.</li>
+        </ul>
+      </div>
+
+      <div class="rec__col">
+        <h3 class="rec__subhead label">Recognition</h3>
+        <ul class="rec__list">
+          <li>
+            Finalist, Judges’ Choice – Multicultural Apprenticeship Awards 2026.
+          </li>
+          <li>
+            Nominee, Tech Professional of the Year – Manchester Young Talent
+            Awards 2026.
+          </li>
+          <li>IBM Technical Specialist Foundation, 2025.</li>
+        </ul>
+      </div>
+
+      <div class="rec__col">
+        <h3 class="rec__subhead label">Credentials</h3>
+        <ul class="rec__list">
+          <li>Red Hat Certified Specialist in Containers.</li>
+          <li>IBM watsonx Essentials.</li>
+          <li>
+            First Class Honours (BSc, Digital &amp; Technology Solutions –
+            Software Engineering), Manchester Metropolitan University.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-block: var(--space-08) var(--space-48);
+  }
+
+  .rec__col {
+    grid-column: span 4;
+  }
+
+  .rec__subhead {
+    padding-bottom: var(--space-12);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-16);
+  }
+
+  .rec__list {
+    list-style: none;
+  }
+
+  .rec__list li {
+    padding-block: var(--space-12);
+    border-top: 1px solid var(--border);
+    max-width: none;
+  }
+
+  .rec__list li:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  @media (max-width: 860px) {
+    .rec__col {
+      grid-column: 1 / -1;
+    }
+
+    .rec__col + .rec__col {
+      margin-top: var(--space-40);
+    }
+  }
+</style>

@@ -1,0 +1,119 @@
+---
+// One project row. Content is passed in from SelectedWork – no invented facts.
+interface Props {
+  name: string;
+  meta: string;            // mono tech/context line
+  icon: string;            // filename in /public (geometric mark)
+  href?: string;           // omitted for internal builds with no link
+  linkLabel?: string;      // e.g. "Live" or the repo path – never "Live Demo" for repo-only
+  status?: string;         // short mono status tag, e.g. "Live"
+  liveHref?: string;       // live URL when href points to the repo instead
+}
+
+const { name, meta, icon, href, linkLabel, status, liveHref } = Astro.props;
+---
+
+<article class="work grid">
+  <div class="work__mark">
+    <img src={`/${icon}`} alt="" width="80" height="80" loading="lazy" />
+  </div>
+  <div class="work__body">
+    <div class="work__head">
+      <h3 class="work__name">{name}</h3>
+      {status && liveHref
+        ? <a href={liveHref} target="_blank" rel="noopener noreferrer" class="label work__status work__status--link">{status} ↗</a>
+        : status && <span class="label work__status">{status}</span>
+      }
+    </div>
+    <p class="label work__meta">{meta}</p>
+    <p class="work__desc"><slot /></p>
+    {
+      href && (
+        <p class="work__link">
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {linkLabel}
+          </a>
+        </p>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .work {
+    padding-block: var(--space-40);
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .work:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .work__mark {
+    grid-column: span 2;
+  }
+
+  .work__mark img {
+    /* Normalised: fixed 80×80, rounded to match the hero photo radius.
+       No border, no background fill — image stands on its own. */
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: var(--radius);
+  }
+
+  .work__body {
+    grid-column: span 10;
+  }
+
+  .work__head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+  }
+
+  .work__name {
+    font-size: 1.5rem;
+  }
+
+  .work__status {
+    color: var(--accent);
+  }
+
+  .work__status--link {
+    text-decoration: none;
+  }
+
+  .work__status--link:hover {
+    color: var(--accent-hover);
+    text-decoration: none;
+  }
+
+  .work__meta {
+    margin-top: var(--space-08);
+  }
+
+  .work__desc {
+    margin-top: var(--space-16);
+    max-width: 64ch;
+    text-align: justify;
+  }
+
+  .work__link {
+    margin-top: var(--space-16);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 640px) {
+    .work__mark,
+    .work__body {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Page not found — Omer Ali Omer"
+  description="The page you requested does not exist."
+>
+  <section class="section not-found">
+    <div class="container">
+      <p class="label">404</p>
+      <h1 class="not-found__heading">Page not found.</h1>
+      <p class="not-found__body">
+        This URL doesn't exist. <a href="/">Go back to the homepage.</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .not-found {
+    padding-block: var(--space-80);
+  }
+
+  .not-found__heading {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    margin-block: var(--space-24) var(--space-16);
+  }
+
+  .not-found__body {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .not-found__body a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  .not-found__body a:hover {
+    text-decoration-thickness: 2px;
+  }
+</style>

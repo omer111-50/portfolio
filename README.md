@@ -1,5 +1,7 @@
 # omeraliomer.com
 
+**Live at [https://www.omeraliomer.com](https://www.omeraliomer.com)**
+
 Personal portfolio site. Built with Astro, styled in the IBM Carbon register. No frameworks beyond what's needed, no placeholder content.
 
 ## Stack
@@ -46,6 +48,12 @@ Build for production:
 npm run build
 npm run preview
 ```
+
+## Deployment
+
+Deployed to GitHub Pages via GitHub Actions. Every push to `main` triggers a build and deploy automatically — no manual step required.
+
+Custom domain: [https://www.omeraliomer.com](https://www.omeraliomer.com) (HTTPS enforced, CNAME at `public/CNAME`).
 
 ## Current state
 

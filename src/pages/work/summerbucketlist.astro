@@ -1,0 +1,81 @@
+---
+import WriteupLayout from "../../layouts/WriteupLayout.astro";
+import LabelledBlock from "../../components/LabelledBlock.astro";
+
+const title = "summerbucketlist.me: Omer Ali Omer";
+const description =
+  "Project write-up: a curated guide to 64 things to do around Manchester, built with React and TypeScript and deployed on GitHub Pages behind a custom domain.";
+---
+
+<WriteupLayout
+  title={title}
+  description={description}
+  name="summerbucketlist.me"
+  meta="React · TypeScript · GitHub Pages"
+  icon="/work-summerbucketlist.png"
+>
+  <Fragment slot="links">
+    <a
+      href="https://summerbucketlist.me"
+      target="_blank"
+      rel="noopener noreferrer">summerbucketlist.me ↗</a
+    >
+    <a
+      href="https://github.com/omer111-50/summer-bucket-list"
+      target="_blank"
+      rel="noopener noreferrer">github.com/omer111-50/summer-bucket-list</a
+    >
+  </Fragment>
+
+  <LabelledBlock label="Problem">
+    <p class="writeup__lede">
+      A curated guide to 64 things to do around Manchester.
+    </p>
+    <p>
+      The problem with a list that long isn't building it: it's narrowing
+      it. Sixty-four options are only useful when you can cut them down to
+      what fits your mood, your budget, and how far you're willing to
+      travel.
+    </p>
+    <p>
+      Built for a group of mates who kept defaulting to the same handful of
+      restaurants every weekend, an attempt to put actual outdoor options
+      in front of them instead.
+    </p>
+  </LabelledBlock>
+
+  <LabelledBlock label="Decisions">
+    <p>
+      React and TypeScript, shipped as a static site on GitHub Pages behind
+      a custom domain. Everything lives client-side: the 64 activities are a
+      static array, and saves and done-state are just localStorage. There
+      was never a reason to run a backend, so a static host was the obvious
+      fit, the same GitHub Pages plus custom-domain setup already used for
+      this portfolio.
+    </p>
+    <p>
+      Narrowing happens through a filter-sheet UX, filtering by mood,
+      budget, and distance instead of scrolling one flat list. It's curation
+      over coverage: 64 activities, not an exhaustive directory.
+    </p>
+    <p>
+      How the 64 activities were selected: this was based purely on group
+      dynamics. Different people in the group have different ideas of what
+      counts as fun, so the list was kept broad, and Gemini was used to help
+      pull it into one collated set.
+    </p>
+  </LabelledBlock>
+
+  <LabelledBlock label="What I'd do differently">
+    <p>
+      It's a habit problem more than a product problem. I use it to plan my
+      own days out, but my friends don't have a reason to open it unless
+      they're already in planning mode, and even then the path of least
+      resistance is just messaging the group chat. There's no pull mechanism
+      bringing anyone back, and because it's my curation rather than theirs,
+      nobody else feels invested in it. Right now it's a well-built personal
+      planning tool that happens to be shared, not something with a genuine
+      social loop.
+    </p>
+  </LabelledBlock>
+</WriteupLayout>

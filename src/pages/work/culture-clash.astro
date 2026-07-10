@@ -1,0 +1,74 @@
+---
+import WriteupLayout from "../../layouts/WriteupLayout.astro";
+import LabelledBlock from "../../components/LabelledBlock.astro";
+
+const title = "Culture Clash: Omer Ali Omer";
+const description =
+  "Project write-up: AI fusion recipes across 28 cuisines with Google Gemini, built by a team of five at GreatUniHack 2025.";
+---
+
+<WriteupLayout
+  title={title}
+  description={description}
+  name="Culture Clash"
+  meta="Next.js · TypeScript · Google Gemini · GreatUniHack 2025"
+  icon="/work-culture-clash.png"
+>
+  <Fragment slot="links">
+    <a
+      href="https://github.com/Git-Push-Chill/CultureClash"
+      target="_blank"
+      rel="noopener noreferrer">github.com/Git-Push-Chill/CultureClash</a
+    >
+  </Fragment>
+
+  <LabelledBlock label="Problem">
+    <p class="writeup__lede">
+      Pick two food cultures and the app blends them into a fusion recipe,
+      drawing on 28 cuisines.
+    </p>
+    <p>
+      Built with a team of five, Aun Raza, Ibraheem Iqbal, Anas Bataweel,
+      Ismail Shafie and me, at GreatUniHack 2025. For the result to be
+      usable it has to be structured, not free-form text: recipes with
+      ingredient-origin tracking, plus generated flag imagery for each
+      pairing.
+    </p>
+    <p>
+      The goal, straight from the project brief we wrote ourselves: bridge
+      cultural divides through food, using AI to generate fusion recipes
+      across cuisines rather than just listing them side by side.
+    </p>
+  </LabelledBlock>
+
+  <LabelledBlock label="Decisions">
+    <p>
+      Next.js 15 and TypeScript end to end. Google Gemini does the
+      generation, returning structured recipes with ingredient-origin
+      tracking rather than plain text.
+    </p>
+    <p>
+      Engineered properly despite the hackathon time box: API caching with
+      TTLs, rate limiting, and error boundaries, plus full keyboard and
+      screen-reader accessibility.
+    </p>
+    <p>
+      We split the work based on expertise: myself and Aun worked on the
+      front end, Ibraheem worked on the back end, Anas worked on
+      integrations and the API, and Shafie was the team's presenter.
+    </p>
+    <p>
+      There's no live deployment: the repo is the only link.
+      Deployment to Vercel was planned but the clock ran out before submission.
+    </p>
+  </LabelledBlock>
+
+  <LabelledBlock label="What I'd do differently">
+    <p>
+      We'd spend more time on design thinking, properly fleshing out the
+      pre-build activities before jumping into code. Future work would add
+      more social features: sharing, recipe ratings and community recipe
+      submissions, which would mean adding user authentication and accounts.
+    </p>
+  </LabelledBlock>
+</WriteupLayout>

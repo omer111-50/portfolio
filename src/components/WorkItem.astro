@@ -8,9 +8,11 @@ interface Props {
   linkLabel?: string;      // e.g. "Live" or the repo path – never "Live Demo" for repo-only
   status?: string;         // short mono status tag, e.g. "Live"
   liveHref?: string;       // live URL when href points to the repo instead
+  writeupHref?: string;    // internal write-up page, when one exists
 }
 
-const { name, meta, icon, href, linkLabel, status, liveHref } = Astro.props;
+const { name, meta, icon, href, linkLabel, status, liveHref, writeupHref } =
+  Astro.props;
 ---
 
 <article class="work grid">
@@ -28,11 +30,19 @@ const { name, meta, icon, href, linkLabel, status, liveHref } = Astro.props;
     <p class="label work__meta">{meta}</p>
     <p class="work__desc"><slot /></p>
     {
-      href && (
+      (href || writeupHref) && (
         <p class="work__link">
-          <a href={href} target="_blank" rel="noopener noreferrer">
-            {linkLabel}
-          </a>
+          {href && (
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              {linkLabel}
+            </a>
+          )}
+          {href && writeupHref && (
+            <span class="work__link-sep" aria-hidden="true">
+              ·
+            </span>
+          )}
+          {writeupHref && <a href={writeupHref}>Read the write-up</a>}
         </p>
       )
     }
@@ -57,7 +67,7 @@ const { name, meta, icon, href, linkLabel, status, liveHref } = Astro.props;
 
   .work__mark img {
     /* Normalised: fixed 80×80, rounded to match the hero photo radius.
-       No border, no background fill — image stands on its own. */
+       No border, no background fill; image stands on its own. */
     width: 80px;
     height: 80px;
     object-fit: cover;
@@ -107,6 +117,11 @@ const { name, meta, icon, href, linkLabel, status, liveHref } = Astro.props;
     margin-top: var(--space-16);
     font-family: var(--font-mono);
     font-size: 0.875rem;
+  }
+
+  .work__link-sep {
+    color: var(--text-secondary);
+    margin-inline: var(--space-08);
   }
 
   @media (max-width: 640px) {

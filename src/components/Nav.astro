@@ -1,6 +1,32 @@
+---
+// Home + Direction restored per README "What's deferred". No Blog link until
+// there's real content to publish.
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/direction", label: "Direction" },
+];
+
+const { pathname } = Astro.url;
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname === href || pathname === `${href}/`;
+---
+
 <nav class="top-nav" aria-label="Primary">
   <div class="container top-nav__inner">
     <a href="/" class="top-nav__wordmark label">Omer Ali Omer</a>
+    <div class="top-nav__links">
+      {
+        links.map(({ href, label }) => (
+          <a
+            href={href}
+            class="top-nav__link label"
+            aria-current={isActive(href) ? "page" : undefined}
+          >
+            {label}
+          </a>
+        ))
+      }
+    </div>
   </div>
 </nav>
 
@@ -30,4 +56,21 @@
     text-decoration: none;
   }
 
+  .top-nav__links {
+    display: flex;
+    gap: var(--space-24);
+  }
+
+  .top-nav__link {
+    text-decoration: none;
+  }
+
+  .top-nav__link:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .top-nav__link[aria-current="page"] {
+    color: var(--text);
+  }
 </style>

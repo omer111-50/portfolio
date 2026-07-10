@@ -1,0 +1,65 @@
+---
+import Base from "../layouts/Base.astro";
+import Footer from "../components/Footer.astro";
+import BackLink from "../components/BackLink.astro";
+import LabelledBlock from "../components/LabelledBlock.astro";
+
+// Copy is locked in README.md: three paragraphs, verbatim. Do not expand
+// without a new concrete fact to anchor it.
+const title = "Direction: Omer Ali Omer";
+const description =
+  "Why I build the way I do, and where the next stage of my career is pointed: from platform engineering, through technical architecture, aimed at the Gulf.";
+---
+
+<Base title={title} description={description}>
+  <section class="section direction">
+    <div class="container">
+      <BackLink />
+      <h1 class="direction__heading">Direction.</h1>
+      <div class="direction__body">
+        <LabelledBlock label="Who I am">
+          <p>
+            I'm Muslim, of Yemeni background, and I speak Arabic. That's not
+            background: it's a good part of why I build the way I do, and it's
+            the direction the next stage of my career is pointed in.
+          </p>
+        </LabelledBlock>
+        <LabelledBlock label="What I've done">
+          <p>
+            In April 2026 I hosted the Muslims@IBM panel on careers in the Middle
+            East, organised and facilitated end to end. It's the kind of thing I
+            want to keep doing: helping people who look like me picture
+            themselves working in the region, not just visiting it.
+          </p>
+        </LabelledBlock>
+        <LabelledBlock label="Where I'm headed">
+          <p>
+            The Gulf isn't a someday plan. It's where enterprise cloud and AI
+            work is scaling fastest right now, and it's the market my trajectory
+            is pointed at: from platform engineering, through technical
+            architecture, aimed specifically there rather than wherever the job
+            happens to take me.
+          </p>
+        </LabelledBlock>
+      </div>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .direction {
+    border-top: none;
+  }
+
+  .direction__heading {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    margin-bottom: var(--space-40);
+  }
+
+  .direction__body p:not(.label) {
+    font-size: clamp(1rem, 1.75vw, 1.125rem);
+    line-height: 1.55;
+    max-width: 58ch;
+  }
+</style>

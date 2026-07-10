@@ -149,6 +149,32 @@ a:hover {
   text-decoration: none;
 }
 
+/* ---- Write-up prose ---------------------------------------------------- */
+/* Lives here (unscoped) because it styles content slotted into WriteupLayout,
+   which keeps the consuming page's scope rather than the layout's. */
+.writeup p {
+  line-height: 1.55;
+}
+
+.writeup p + p {
+  margin-top: var(--space-16);
+}
+
+.writeup__lede {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--text);
+  max-width: 62ch;
+  border-left: 3px solid var(--accent);
+  padding-left: var(--space-16);
+}
+
+.writeup__lede + p {
+  margin-top: var(--space-16);
+}
+
 /* ---- Responsive -------------------------------------------------------- */
 @media (max-width: 640px) {
   :root {

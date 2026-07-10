@@ -1,0 +1,25 @@
+---
+// Breadcrumb-style back link shown above the eyebrow/H1 on sub-pages.
+// Defaults to Home; overridable for future nested routes.
+interface Props {
+  href?: string;
+  label?: string;
+}
+
+const { href = "/", label = "← Home" } = Astro.props;
+---
+
+<a class="label back" href={href}>{label}</a>
+
+<style>
+  .back {
+    display: inline-block;
+    margin-bottom: var(--space-24);
+    text-decoration: none;
+  }
+
+  .back:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>

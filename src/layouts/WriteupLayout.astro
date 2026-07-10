@@ -1,0 +1,85 @@
+---
+// Shared scaffolding for project write-up pages: back link, header (eyebrow,
+// name, meta, links, icon), then a slot for the LabelledBlock sections.
+// Write-up prose styling lives in global.css because it targets slotted
+// content, which keeps the consuming page's scope rather than this layout's.
+import Base from "./Base.astro";
+import Footer from "../components/Footer.astro";
+import BackLink from "../components/BackLink.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  name: string;
+  meta: string;
+  icon: string;
+}
+
+const { title, description, name, meta, icon } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <article class="section writeup">
+    <div class="container">
+      <BackLink />
+      <div class="writeup__header">
+        <div class="writeup__header-text">
+          <p class="label">Project write-up</p>
+          <h1 class="writeup__name">{name}</h1>
+          <p class="label writeup__meta">{meta}</p>
+          <p class="writeup__links"><slot name="links" /></p>
+        </div>
+        <img
+          class="writeup__icon"
+          src={icon}
+          alt=""
+          width="80"
+          height="80"
+          loading="lazy"
+        />
+      </div>
+      <slot />
+    </div>
+  </article>
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .writeup {
+    border-top: none;
+  }
+
+  .writeup__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-24);
+    margin-bottom: var(--space-48);
+  }
+
+  .writeup__icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--radius);
+  }
+
+  .writeup__name {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    margin-block: var(--space-08) var(--space-16);
+  }
+
+  .writeup__meta {
+    margin-bottom: var(--space-16);
+  }
+
+  .writeup__links {
+    display: flex;
+    gap: var(--space-24);
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+</style>

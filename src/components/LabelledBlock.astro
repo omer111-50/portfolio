@@ -1,0 +1,27 @@
+---
+// A section block: mono eyebrow label above slotted content, with a 1px
+// top-divider between consecutive blocks (first-child idiom via the + selector).
+// Prose is slotted so it keeps the consuming page's scope and styling.
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="lblock">
+  <p class="label">{label}</p>
+  <slot />
+</div>
+
+<style>
+  .lblock + .lblock {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-32);
+    margin-top: var(--space-32);
+  }
+
+  .lblock .label {
+    margin-bottom: var(--space-16);
+  }
+</style>

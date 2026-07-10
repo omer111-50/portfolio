@@ -8,32 +8,60 @@ Personal portfolio site. Built with Astro, styled in the IBM Carbon register. No
 
 - Astro 7 (static output)
 - IBM Plex Sans / Mono / Serif via `@fontsource`
-- Carbon-derived design tokens — Gray 10 background, Blue 60 accent, 8px spacing scale, 12-column grid
+- Carbon-derived design tokens: Gray 10 background, Blue 60 accent, 8px spacing scale, 12-column grid
+- `@astrojs/sitemap` for `sitemap-index.xml`
 - No CSS frameworks, no component libraries, no JS runtime
+
+## Routes
+
+- `/` homepage: Hero, Selected Work, Recognition, footer
+- `/direction` the trajectory statement (locked copy, see below)
+- `/work/summerbucketlist` project write-up
+- `/work/culture-clash` project write-up
+- `404` not-found page
 
 ## Project structure
 
 ```
 src/
   components/
-    Nav.astro          sticky top bar — wordmark only for now
-    Hero.astro         headline, lede, headshot
-    SelectedWork.astro three projects in deliberate order
-    WorkItem.astro     single project row
-    Recognition.astro  speaking, awards, credentials
-    Footer.astro       email, LinkedIn, GitHub, Twitter
+    Nav.astro            sticky top bar: wordmark, Home, Direction
+    Hero.astro           headline, lede, headshot
+    SelectedWork.astro   three projects in deliberate order
+    WorkItem.astro       single project row (used by SelectedWork)
+    Recognition.astro    speaking, awards, credentials
+    Footer.astro         email, LinkedIn, GitHub, Twitter
+    BackLink.astro       shared "← Home" breadcrumb for sub-pages
+    LabelledBlock.astro  shared eyebrow-label section with a 1px top-divider
   layouts/
-    Base.astro         html shell, fonts, nav mount
+    Base.astro           html shell, fonts, nav mount, Person JSON-LD
+    WriteupLayout.astro  shared scaffold for the /work write-ups
   pages/
-    index.astro        homepage
+    index.astro              homepage
+    direction.astro          /direction
+    work/
+      summerbucketlist.astro /work/summerbucketlist
+      culture-clash.astro    /work/culture-clash
+    404.astro                not-found page
   styles/
-    global.css         design tokens, reset, layout primitives
+    global.css           design tokens, reset, layout primitives, write-up prose
 public/
   headshot.jpg
   work-summerbucketlist.png
   work-culture-clash.png
   work-wendy.png
+  favicon/
+  robots.txt
+  CNAME
 ```
+
+## Shared components
+
+Three pieces are extracted so the sub-pages stay consistent:
+
+- **`BackLink.astro`** the "← Home" link above the heading. Used by `/direction` and both write-ups.
+- **`LabelledBlock.astro`** a mono eyebrow label above slotted content, with a 1px `--border` divider between consecutive blocks. Used by `/direction` (3 blocks) and both write-ups (3 each). Prose is slotted, so it keeps the consuming page's styling.
+- **`WriteupLayout.astro`** wraps `Base` and owns the write-up header (eyebrow, name, meta, links slot, icon). Both write-ups reduce to frontmatter plus `LabelledBlock`s. The write-up prose rules (`.writeup p`, `.writeup__lede`) live in `global.css` rather than the layout, because they style slotted content, which keeps the page's scope rather than the layout's.
 
 ## Running locally
 
@@ -49,55 +77,38 @@ npm run build
 npm run preview
 ```
 
+Accessibility check (both tools should report zero issues on every route):
+
+```sh
+npx pa11y http://localhost:4321/
+npx axe http://localhost:4321/
+```
+
 ## Deployment
 
-Deployed to GitHub Pages via GitHub Actions. Every push to `main` triggers a build and deploy automatically — no manual step required.
+Deployed to GitHub Pages via GitHub Actions. Every push to `main` triggers a build and deploy automatically, no manual step required.
 
 Custom domain: [https://www.omeraliomer.com](https://www.omeraliomer.com) (HTTPS enforced, CNAME at `public/CNAME`).
 
-## Current state
+## Structured data & discovery
 
-Homepage is complete: Hero, Selected Work, Recognition, footer. Nav bar shows the wordmark only.
-
-**Selected work**
-
-- summerbucketlist.me — React + TypeScript, 64 Manchester activities, filter-sheet UX. Live at summerbucketlist.me, repo at github.com/omer111-50/summer-bucket-list. The Live badge links to the site; the repo URL below the description links to the code — two distinct affordances, both intentional.
-- Culture Clash — Next.js 15 + TypeScript, Google Gemini fusion recipes across 28 cuisines, built with a team of five (Omer, Aun Raza, Ibraheem Iqbal, Anas Bataweel, Ismail Shafie) at GreatUniHack 2025. Repo at github.com/Git-Push-Chill/CultureClash. No live deployment — repo link only.
-- Wendy — Next.js + TypeScript on IBM Carbon, real-time scam-call detection concept, built same-day at an internal IBM hackathon.
-
-**Recognition diary note:** Manchester Young Talent Awards shortlist drops September 2026. If shortlisted, update "Nominee" to "Shortlisted" in `Recognition.astro`.
+- `Base.astro` emits a `Person` JSON-LD block (name, jobTitle, `worksFor: IBM`, `sameAs` LinkedIn/GitHub/Twitter). Values are pulled from `Hero.astro` and `Footer.astro`, not invented; keep them in sync if either changes.
+- `@astrojs/sitemap` generates `sitemap-index.xml` at build time; `robots.txt` allows all crawling and points at it.
+- Canonical, `og:image`, JSON-LD `url`, CNAME, and `astro.config.mjs` site all use `www.omeraliomer.com`. Keep any new absolute URLs on the same host.
 
 ## What's deferred
 
-These are intentionally not built yet. Don't add them until the content is actually ready.
+Intentionally not built yet. Don't add them until the content is actually ready.
 
-**Nav links and /direction page**
-The nav currently shows the wordmark only. Once ready, add Home and Direction links back to `Nav.astro` and create `src/pages/direction.astro`. The copy is locked below — do not rewrite it.
+**Blog** Not started. Don't add a nav link or route until there's real content to publish. A nav link to an empty page is worse than no link.
 
-**Blog**
-Not started. Do not add a nav link or route until there's real content to publish. A nav link to an empty page is worse than no link.
-
-**Project write-ups**
-Individual pages for each project — problem, decisions, what would be different. Worth doing once the homepage is settled.
-
-**About / trajectory**
-Optional longer-form page covering the arc from apprentice to architecture to the Gulf. No rush.
-
-## Direction page — locked copy
-
-When the `/direction` page is built, use exactly this. Three paragraphs. Do not expand without a new concrete fact to anchor it — sentiment without a fact is the failure mode this has been pulled back from twice.
-
-> I'm Muslim, of Yemeni background, and I speak Arabic. That's not background — it's a good part of why I build the way I do, and it's the direction the next stage of my career is pointed in.
->
-> In April 2026 I hosted the Muslims@IBM panel on careers in the Middle East — organised and facilitated end to end. It's the kind of thing I want to keep doing: helping people who look like me picture themselves working in the region, not just visiting it.
->
-> The Gulf isn't a someday plan. It's where enterprise cloud and AI work is scaling fastest right now, and it's the market my trajectory is pointed at — from platform engineering, through technical architecture, aimed specifically there rather than wherever the job happens to take me.
+**About / trajectory** Optional longer-form page covering the arc from apprentice to architecture to the Gulf. No rush.
 
 ## Design conventions
 
 - All spacing from `--space-*` tokens only (2/4/8/12/16/24/32/40/48/64/80/96px). No eyeballed values.
 - Single accent: `--accent` (#0f62fe). Don't introduce a second colour.
-- `--radius` (8px) is the one radius in use — hero photo and project icons. Everything else is square-cornered.
+- `--radius` (8px) is the one radius in use: hero photo and project icons. Everything else is square-cornered.
 - 1px flat borders for separation (`--border`), 2px solid rings for focus states. No box-shadows.
 - The staggered reveal animation in `Hero.astro` is the one deliberate motion moment. Don't add more.
 
@@ -106,6 +117,10 @@ Glassmorphism, bento-grid layouts, grain/noise overlays, gradient text or blobs,
 
 ## Copy conventions
 
-British English throughout. Direct and specific — no "passionate about", "at the intersection of", or anything ending in "drive innovation". Real projects, real facts, nothing inflated.
+British English throughout. Direct and specific: no "passionate about", "at the intersection of", or anything ending in "drive innovation". Real projects, real facts, nothing inflated.
+
+No em-dashes (—). Use a colon, semicolon, or comma, whichever the sentence needs. En-dashes (–) are fine used sparingly.
+
+Banned filler: "delve", "robust", "seamless", "holistic", "leveraging", "in today's digital landscape", "testament to". Say the plain thing instead.
 
 IBM Plex Serif is available as an editorial accent (pull-quotes in project write-ups) but is not a second UI font. Use it sparingly if at all.

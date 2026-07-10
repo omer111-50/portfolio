@@ -14,7 +14,25 @@ interface Props {
 }
 
 const { title, description, ogImage = "/headshot.jpg" } = Astro.props;
-const canonicalUrl = new URL(Astro.url.pathname, "https://omeraliomer.com").href;
+const canonicalUrl = new URL(Astro.url.pathname, "https://www.omeraliomer.com").href;
+
+// Person schema: values match Hero.astro (job title) and Footer.astro (URLs).
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Omer Ali Omer",
+  jobTitle: "Platform Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "IBM",
+  },
+  url: "https://www.omeraliomer.com",
+  sameAs: [
+    "https://linkedin.com/in/omer-ali-omer",
+    "https://github.com/omer111-50",
+    "https://x.com/oaomer_",
+  ],
+};
 ---
 
 <!doctype html>
@@ -35,8 +53,14 @@ const canonicalUrl = new URL(Astro.url.pathname, "https://omeraliomer.com").href
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={`https://omeraliomer.com${ogImage}`} />
+    <meta property="og:image" content={`https://www.omeraliomer.com${ogImage}`} />
     <meta property="og:url" content={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

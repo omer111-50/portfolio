@@ -50,6 +50,8 @@ public/
   work-summerbucketlist.png
   work-culture-clash.png
   work-wendy.png
+  logo.png
+  og-image.png
   favicon/
   robots.txt
   CNAME

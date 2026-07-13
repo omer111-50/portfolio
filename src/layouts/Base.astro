@@ -13,7 +13,7 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, ogImage = "/headshot.jpg" } = Astro.props;
+const { title, description, ogImage = "/og-image.png" } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, "https://www.omeraliomer.com").href;
 
 // Person schema: values match Hero.astro (job title) and Footer.astro (URLs).

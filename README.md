@@ -94,7 +94,7 @@ Custom domain: [https://www.omeraliomer.com](https://www.omeraliomer.com) (HTTPS
 
 ## Structured data & discovery
 
-- `Base.astro` emits a `Person` JSON-LD block (name, jobTitle, `worksFor: IBM`, `sameAs` LinkedIn/GitHub/Twitter). Values are pulled from `Hero.astro` and `Footer.astro`, not invented; keep them in sync if either changes.
+- `Base.astro` emits a `Person` JSON-LD block (name, jobTitle, `worksFor: IBM`, `sameAs` LinkedIn/GitHub/Twitter). Values are pulled from `Hero.astro` and `Footer.astro`, not invented; keep them in sync if either changes. Current public title is `Client Engineer`.
 - `@astrojs/sitemap` generates `sitemap-index.xml` at build time; `robots.txt` allows all crawling and points at it.
 - Canonical, `og:image`, JSON-LD `url`, CNAME, and `astro.config.mjs` site all use `www.omeraliomer.com`. Keep any new absolute URLs on the same host.
 
@@ -120,6 +120,8 @@ Glassmorphism, bento-grid layouts, grain/noise overlays, gradient text or blobs,
 ## Copy conventions
 
 British English throughout. Direct and specific: no "passionate about", "at the intersection of", or anything ending in "drive innovation". Real projects, real facts, nothing inflated.
+
+Locked positioning for the homepage and metadata uses `Client Engineer` as the public title. Keep role naming aligned across `Hero.astro`, homepage metadata, and `Base.astro` JSON-LD.
 
 No em-dashes (—). Use a colon, semicolon, or comma, whichever the sentence needs. En-dashes (–) are fine used sparingly.
 

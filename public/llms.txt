@@ -1,0 +1,17 @@
+# Omer Ali Omer
+
+> Client Engineer at IBM Client Engineering, Manchester. Enterprise AI solutioning and cloud-native platform engineering, moving into technical architecture for enterprise AI with a career pointed at the Gulf.
+
+## Summary
+Omer Ali Omer builds enterprise AI platforms and cloud-native software at IBM Client Engineering in Manchester, UK. He holds First Class Honours in Digital & Technology Solutions (2026). His trajectory is pointed towards technical architecture for enterprise AI in the Gulf region.
+
+## Live Pages & Write-ups
+- [Homepage](https://www.omeraliomer.com/): Overview of role, selected projects, and recognition.
+- [Direction](https://www.omeraliomer.com/direction): Career trajectory, focus on technical architecture, and the Gulf market.
+- [summerbucketlist.me Write-up](https://www.omeraliomer.com/work/summerbucketlist): Project write-up for a curated Manchester guide built with React, TypeScript, and GitHub Pages.
+- [Culture Clash Write-up](https://www.omeraliomer.com/work/culture-clash): Project write-up for an AI fusion recipe app using Google Gemini, built at GreatUniHack 2025.
+
+## External Profiles
+- LinkedIn: https://linkedin.com/in/omer-ali-omer
+- GitHub: https://github.com/omer111-50
+- X / Twitter: https://x.com/oaomer_
